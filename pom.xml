@@ -100,7 +100,7 @@
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Landmark Technologies Snapshot Nexus Repository </name>
+	      <name>Landmark Technologies Snapshot Nexus Repository</name>
 	      <url>http://18.233.6.76:8081/repository/desyraj-snapshot/</url>
 	    </snapshotRepository>
 	    
