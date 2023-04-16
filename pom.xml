@@ -95,13 +95,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://34.239.111.73:8081/repository/zelle-releases/</url>    
+	      <url>http://34.239.111.73:8081/repository/mtn-releases/</url>    
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository</name>
-	      <url>http://34.239.111.73:8081/repository/zelle-snapshot/</url>
+	      <url>http://34.239.111.73:8081/repository/mtn-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
