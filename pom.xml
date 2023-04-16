@@ -107,7 +107,7 @@
 	</distributionManagement>
 	
 	<build>
-		<finalName>zelle</finalName>
+		<finalName>mtn</finalName>
 		
 		<plugins>
 			<plugin>
