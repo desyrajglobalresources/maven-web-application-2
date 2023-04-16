@@ -1,0 +1,30 @@
+node{
+  def mavenHome = tool name: 'maven3.9.1'
+ stage('1.CodeClone'){
+    git credentialsId: 'gitHubCredentials', url: 'https://github.com/desyrajglobalresources/maven-web-application-2'
+   }
+ stage('2MavenBuild'){
+   sh "${mavenHome}/bin/mvn package"
+ }
+ stage('3codeQuality'){
+   sh "${mavenHome}/bin/mvn sonar:sonar"
+ }
+ stage('4Upload2Nexus'){
+   sh "${mavenHome}/bin/mvn deploy"
+  }
+stage('5Deploy2UAT'){
+    deploy adapters: [tomcat9(credentialsId: 'tomcatcredential', path: '', url: 'http://35.153.78.14:8080/')], contextPath: null, war: 'target/*war'
+  }
+  stage('6ManualApproval'){
+   sh "echo 'review and aprrove before final deployment' "
+   timeout(time:5, unit: 'HOURS') {
+   input message: 'Project ready for deployment please review and approve'
+   }
+  }
+  stage('7Deploy2PROD'){
+    deploy adapters: [tomcat9(credentialsId: 'tomcatcredential', path: '', url: 'http://35.153.78.14:8080/')], contextPath: null, war: 'target/*war'
+  }
+  stage('8EmailNotification'){
+      emailext body: 'hello team, build successfully deployed', recipientProviders: [contributor()], subject: 'build status', to: 'desyraj1@gmail.com'
+  }
+}
